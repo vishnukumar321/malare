@@ -12,15 +12,15 @@ trait SQLgettersetter{
     public function get_data($name){
         if(!$this->conn){
             $this->conn= database::get_conn();
-        }
+        } 
         $sql="SELECT * FROM `$this->table` WHERE `$this->element` = '$this->id'";
         $result=$this->conn->query($sql);
-        if($result->num_rows==1){
+        if($result->num_rows==true){
             $row=$result->fetch_assoc();
             if($row[$name]){
                 return $row[$name];
             }else{
-                throw new Exception("there no $name named data in the $this->table table");
+                 throw new Exception("there no $name named data in the $this->table table");
             }
         }else{
             throw new Exception("there are no data named $name in the $this->table table");
