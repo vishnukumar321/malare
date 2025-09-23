@@ -76,5 +76,16 @@ class session{
         get_file(basename($_SERVER['PHP_SELF'],".php"));
         get_file("footer");
     }
+    public static function ensurelogin(){
+        if(!session::session_get('token')){
+            session::session_set('redirect',$_SERVER['REQUEST_URI']);
+            ?><script>window.location="login.php"</script><?php
+        }
+    }
+    public static function already_login(){
+        if(session::session_get('token')){
+            ?><script>window.location="<?=get_conf('documentroot')?>"</script><?php
+        }
+    }
 }
 ?>

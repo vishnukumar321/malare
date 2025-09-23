@@ -1,5 +1,6 @@
 <?php
 include_once "lib/load.php";
+session::already_login();
 $result=false;
 $login=false;
 $error=false;
@@ -11,7 +12,11 @@ if(isset($_POST['name']) and isset($_POST['pass'])){
 }
 if($result){
     if($login){
-        ?><script>window.location="index.php"</script><?php
+      $redirect_location= get_conf('documentroot');
+      if(session::session_get('redirect')){
+        $redirect_location=session::session_get('redirect');
+      }
+        ?><script>window.location="<?=$redirect_location?>"</script><?php
     }else{
         $error=true;
     }

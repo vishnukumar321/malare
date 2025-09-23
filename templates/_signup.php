@@ -1,5 +1,6 @@
 <?php
 include_once "lib/load.php";
+session::already_login();
 $result=false;
 $signup=false;
 $error=false;

@@ -1,6 +1,10 @@
+<pre>
 <?php
 include_once "lib/load.php";
-$user=new user(94);
-echo $user->getphone();
+session::ensurelogin();
+// $user=new user(94);
+// echo $user->getemail();
+print_r($_SERVER); 
 ?>
-{"name": "vishnu5", "pass": 5}
+</pre>
+<!-- {"name": "vishnu5", "pass": 5} -->

@@ -10,7 +10,8 @@ trait SQLgettersetter{
         }
     }
     public function get_data($name){
-        if(!$this->conn){
+        try{
+            if(!$this->conn){
             $this->conn= database::get_conn();
         } 
         $sql="SELECT * FROM `$this->table` WHERE `$this->element` = '$this->id'";
@@ -25,9 +26,13 @@ trait SQLgettersetter{
         }else{
             throw new Exception("there are no data named $name in the $this->table table");
         }
+        }catch(Exception $e){
+            return false;
+        }
     }
     public function set_data($name,$args){
-        if(!$this->conn){
+        try{
+            if(!$this->conn){
             $this->conn=database::get_conn();
         }
         $sql="UPDATE `$this->table` SET `$name` = '$args' WHERE `$this->element` = '$this->id';";
@@ -35,6 +40,9 @@ trait SQLgettersetter{
             return true;
         }else{
             throw new Exception("can not set data to $this->table table".__LINE__);
+        }
+        }catch(Exception $e){
+            return false;
         }
     }
 }
