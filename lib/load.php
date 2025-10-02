@@ -3,9 +3,10 @@ include_once "lib/includes/_database.class.php";
 include_once "lib/includes/_user.class.php";
 include_once "lib/includes/_session.class.php";
 include_once "lib/includes/_auth.class.php";
+include_once "app/_post.class.php";
 session::session_start();
 global $conf;
-$conf = file_get_contents($_SERVER['DOCUMENT_ROOT']."/malare/project/malareconfigfile.json");
+$conf = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../project/malareconfigfile.json");
 function get_conf($name){
     global $conf;
     $arr=json_decode($conf, true);

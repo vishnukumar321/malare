@@ -95,7 +95,7 @@ VALUES ('$user->id', '$ip', '$agent', '$token', '$time', '1');";
                 {
                     date_default_timezone_set('asia/kolkata');
                     $diff=time()-$time;
-                    if($diff<3000){
+                    if($diff<2592000){ // 2592000 means one month 
                         return true;
                     }else{
                         return false;

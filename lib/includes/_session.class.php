@@ -50,6 +50,10 @@ class session{
         $auth=new auth(session::session_get('token'));
         return $auth;
     }
+    public static function get_user_object(){
+        $user=new user(session::get_id());
+        return $user;
+    }
     public static function session_delete(){
         if(!session::$conn){
             session::$conn=database::get_conn();

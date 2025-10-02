@@ -3,7 +3,7 @@
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="<?=get_conf("documentroot")?>/assets/js/color-modes.js"></script>
+  <head><script src="<?=get_conf("documentroot")?>assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 
 
 
-<link href="<?=get_conf("documentroot")?>/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?=get_conf("documentroot")?>/css/index.css" rel="stylesheet">
-<link href="<?=get_conf("documentroot")?>/css/signup_login.css" rel="stylesheet">
-  </head>
+<link href="<?=get_conf("documentroot")?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=get_conf("documentroot")?>css/index.css" rel="stylesheet">
+<link href="<?=get_conf("documentroot")?>css/signup_login.css" rel="stylesheet">
+  </head
