@@ -3,10 +3,12 @@ include_once "lib/load.php";
 include_once __DIR__ . "/../lib/traits/SQLgettersetter.trait.php";
 class post
 {
+    use SQLgettersetter;
     public $table;
     public $id;
     public $conn;
     public $data;
+    public $element;
     public static function post_upload($post_text, $image_tmp)
     {
         try {
@@ -38,6 +40,8 @@ VALUES ('$post_text', '0', '/image.php?name=$post_name', '1', now(), '$owner');"
             if (!$this->conn) {
                 $this->conn = database::get_conn();
             }
+            $this->element='id';
+            $this->table='posts';
             $this->id = $id;
             $sql = "SELECT * FROM `posts` WHERE `id` = '$id'";
             $result = $this->conn->query($sql);
@@ -49,5 +53,11 @@ VALUES ('$post_text', '0', '/image.php?name=$post_name', '1', now(), '$owner');"
         } catch (Exception $e) {
             return false;
         }
+    }
+    public static function getallposts(){
+        $conn=database::get_conn();
+        $sql="SELECT `id` FROM `posts` ORDER BY `uploaded_time` DESC";
+        $result=$conn->query($sql);
+        return iterator_to_array($result);
     }
 }
